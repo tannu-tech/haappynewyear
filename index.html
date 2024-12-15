@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year Animation</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0e1a35;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .year {
+            font-size: 5rem;
+            font-weight: bold;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+        .balloon {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            animation: floatBalloon 5s ease-in-out forwards;
+            opacity: 0;
+        }
+        .happy-text {
+            font-size: 4rem;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-top: 20px;
+        }
+        @keyframes floatBalloon {
+            0% {
+            transform: translate(150vw, 50vh) scale(0.2);
+            opacity: 0;
+            }
+            50% {
+            opacity: 1;
+            }
+            100% {
+            transform: translate(0, -200px) scale(1);
+            opacity: 1;
+            }
+        }
+
+        @keyframes floatThread {
+            0% {
+                transform: translateY(300px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 1;
+            }
+        }
+#balloon img{
+    height: 250vh;
+    width: 100px;
+}
+        @media (max-width: 768px) {
+            .year {
+                font-size: 3rem;
+            }
+
+            .balloon {
+                width: 70px;
+            }
+
+            .happy-text {
+                font-size: 2.3rem;
+            }
+
+            .thread {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="year" class="year">202<span id="digit">4</span></div>
+        <!-- Balloon Image -->
+        <img id="balloon" class="balloon" src="4.png" alt="Balloon">
+        
+        <div id="newYearText" class="happy-text">Happy New Year!</div>
+        </div>
+        <div class="background"></div>
+
+    <script>
+        const yearElement = document.getElementById('year');
+        const digitElement = document.getElementById('digit');
+        const balloon = document.getElementById('balloon');
+        const newYearText = document.getElementById('newYearText');
+
+        // Start animations
+        setTimeout(() => {
+            balloon.style.opacity = 0.01;
+        }, 100);
+
+        // Change digit to 5 and move balloon
+        setTimeout(() => {
+            digitElement.textContent = "5";
+            balloon.src = "5.png";
+            balloon.style.transform = "translateY(-1px)";
+            balloon.style.display = 'none';
+        }, 5000);
+
+        // Show "Happy New Year" text
+        setTimeout(() => {
+            newYearText.style.opacity = 1;
+        }, 6000);
+    </script>
+</body>
+</html>
