@@ -79,8 +79,9 @@
             }
 
             .balloon {
-                width: 70px;
-            }
+    width: 70px;
+    margin-top: 60px;
+}
 
             .happy-text {
                 font-size: 2.3rem;
@@ -90,9 +91,11 @@
                 height: 150px;
             }
         }
+        
     </style>
 </head>
 <body>
+    
     <div class="container">
         <div id="year" class="year">202<span id="digit">4</span></div>
         <!-- Balloon Image -->
@@ -100,8 +103,9 @@
         
         <div id="newYearText" class="happy-text">Happy New Year!</div>
         </div>
+       
         <div class="background"></div>
-
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <script>
         const yearElement = document.getElementById('year');
         const digitElement = document.getElementById('digit');
@@ -124,7 +128,19 @@
         // Show "Happy New Year" text
         setTimeout(() => {
             newYearText.style.opacity = 1;
+          
+            launchConfetti();
         }, 6000);
     </script>
+    <script>
+        // Function to trigger confetti
+        function launchConfetti() {
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x: 0.5, y: 0.5 }
+          });
+        }
+      </script>
 </body>
 </html>
